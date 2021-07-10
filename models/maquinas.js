@@ -14,6 +14,11 @@ module.exports = (sequelize,type) => {
             allowNull: false
         
         },
+        operativa:{
+            type: type.BOOLEAN,
+            allowNull: false
+        
+        },
         ubicacion: type.STRING,
         modelo:type.STRING
     })
