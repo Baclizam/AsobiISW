@@ -12,7 +12,24 @@ router.post('/', async function(req, res, next) {
     res.json(machine)
 });
 
+router.get('/search/operative/:bool', async function(req,res){
+    const machine = await Maquina.findAll({
+        where: {operativa : req.params.bool}
+    })
+    res.json(machine)
+});
 
+router.get('/search/type/:tipo', async function(req,res){
+    const machine = await Maquina.findAll({
+        where: {tipo : req.params.tipo}
+    })
+    res.json(machine)
+});
 
-
+router.get('/search/ubication/:sala', async function(req,res){
+    const machine = await Maquina.findAll({
+        where: {ubicacion : req.params.sala}
+    })
+    res.json(machine)
+});
 module.exports = router;
