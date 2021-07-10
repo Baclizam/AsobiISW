@@ -1,6 +1,6 @@
 const {Sequelize} = require('sequelize')
 
-const FilmModel = require('./models/films')
+const MaquinaModel = require('./models/maquinas')
 
 const sequelize = new Sequelize('yEqg5petzD','yEqg5petzD','dSQHw3hRLu',{
     host:'remotemysql.com',
@@ -8,13 +8,13 @@ const sequelize = new Sequelize('yEqg5petzD','yEqg5petzD','dSQHw3hRLu',{
 
 })
 
-const Film = FilmModel(sequelize,Sequelize)
 
+const Maquina = MaquinaModel(sequelize,Sequelize)
 sequelize.sync({force:false})
 .then(()=>{
     console.log('Tablas sincronizadas');
 })
 
 module.exports = {
-    Film
+    Maquina
 }

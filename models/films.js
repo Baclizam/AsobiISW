@@ -8,6 +8,7 @@ module.exports = (sequelize,type) => {
         title: type.STRING,
         description:type.STRING,
         score: type.INTEGER,
-        director:type.STRING  
+        director:type.STRING,
+        luis:type.INTEGER,
     })
-}
+}   
