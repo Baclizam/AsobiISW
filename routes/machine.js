@@ -23,14 +23,20 @@ router.delete('/:machineId', async function(req, res, next) {
     });
     res.json({success: "se ha borrado la maquina"})
 });
-router.get('/search/operative/:bool', async function(req,res){
-    const machine = await Maquina.findAll({
-        where: {operativa : req.params.bool}
-    })
-    res.json(machine)
-});
 router.put('/update/operative/:idMachine/:bool', async function(req, res, next) {
     await Maquina.update({operativa:req.params.bool},{
+        where: {id :req.params.idMachine}
+    });
+    res.json({success: "se ha modificado"})
+});
+router.put('/update/ubication/:idMachine/:ubication', async function(req, res, next) {
+    await Maquina.update({ubicacion:req.params.ubication},{
+        where: {id :req.params.idMachine}
+    });
+    res.json({success: "se ha modificado"})
+});
+router.put('/update/name/:idMachine/:name', async function(req, res, next) {
+    await Maquina.update({nombre:req.params.name},{
         where: {id :req.params.idMachine}
     });
     res.json({success: "se ha modificado"})
