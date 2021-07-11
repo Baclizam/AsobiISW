@@ -12,34 +12,55 @@ router.post('/', async function(req, res, next) {
     res.json(machine)
 });
 router.put('/:machineId', async function(req, res, next) {
-    await Maquina.update(req.body,{
+    let response = await Maquina.update(req.body,{
         where: {id :req.params.machineId}
     });
-    res.json({success: "se ha modificado"})
+    if(response==0){
+        res.status(404).send({failed: "No existe la maquina especificada"})
+    }else{
+        res.status(200).send({success: "se ha actualizado el estado de la maquina"})
+    }
 });
 router.delete('/:machineId', async function(req, res, next) {
-    await Maquina.destroy({
+    let response = await Maquina.destroy({
         where: {id :req.params.machineId}
     });
-    res.json({success: "se ha borrado la maquina"})
+    if(response==0){
+        res.status(404).send({failed: "No existe la maquina especificada"})
+    }else{
+        res.status(200).send({success: "se ha borrado la maquina"})
+    }
+    
 });
 router.put('/update/operative/:idMachine/:bool', async function(req, res, next) {
-    await Maquina.update({operativa:req.params.bool},{
+    let response = await Maquina.update({operativa:req.params.bool},{
         where: {id :req.params.idMachine}
     });
-    res.json({success: "se ha modificado"})
+    if(response==0){
+        res.status(404).send({failed: "No existe la maquina especificada"})
+    }else{
+        res.status(200).send({success: "se ha actualizado el estado de la maquina"})
+    }
 });
 router.put('/update/ubication/:idMachine/:ubication', async function(req, res, next) {
-    await Maquina.update({ubicacion:req.params.ubication},{
+    let response = await Maquina.update({ubicacion:req.params.ubication},{
         where: {id :req.params.idMachine}
     });
-    res.json({success: "se ha modificado"})
+    if(response==0){
+        res.status(404).send({failed: "No existe la maquina especificada"})
+    }else{
+        res.status(200).send({success: "se ha actualizado el estado de la maquina"})
+    }
 });
 router.put('/update/name/:idMachine/:name', async function(req, res, next) {
-    await Maquina.update({nombre:req.params.name},{
+    let response = await Maquina.update({nombre:req.params.name},{
         where: {id :req.params.idMachine}
     });
-    res.json({success: "se ha modificado"})
+    if(response==0){
+        res.status(404).send({failed: "No existe la maquina especificada"})
+    }else{
+        res.status(200).send({success: "se ha actualizado el estado de la maquina"})
+    }
 });
 
 router.get('/search/operative/:bool', async function(req,res){
