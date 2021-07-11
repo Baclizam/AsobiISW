@@ -7,6 +7,12 @@ router.get('/', async function(req, res, next) {
     const machines = await Maquina.findAll();
     res.json(machines)
 });
+router.get('/search/id/:id', async function(req, res, next) {
+    const machines = await Maquina.findAll({
+        where: {id : req.params.id}
+    });
+    res.json(machines)
+});
 router.post('/', async function(req, res, next) {
     const machine = await Maquina.create(req.body);
     res.json(machine)
